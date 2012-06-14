@@ -4,24 +4,32 @@
     %meta{ charset: "utf-8" }
       %title Bootstrap, from Twitter
       %meta{ content: "width=device-width, initial-scale=1.0", name: "viewport"}
-      %meta{ content: "", name: "description"}
-      %meta{ content: "", name: "author"}
+      %meta{ content: "Simple Budgeting", name: "description"}
+      %meta{ content: "Adam Fortuna", name: "author"}
+      %link{ href: "http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600", rel: "stylesheet", type: "text/css" }
+
       = stylesheet_link_tag "application"
       /[if lt IE 9]
         <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
       = csrf_meta_tags
   %body
-    .navbar
+    .navbar.navbar-fixed-top
       .navbar-inner
         .container
-          = link_to "Demo Home", root_path, class: 'brand'
+          %a.btn.btn-navbar{ :"data-toggle" => "collapse", :"data-target" => ".nav-collapse" }
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+
+          = link_to "Go Green", root_path, class: 'brand'
+
           .nav-collapse
             %ul.nav
               %li
                 = link_to "Home", root_path
               %li
                 = link_to "About", about_path
-            %div.navbar-text.pull-right
+            .navbar-text.pull-right
               - if user_signed_in?
                 %p.navbar-text.pull-right
                   Logged in as
@@ -34,16 +42,43 @@
                     = link_to "Sign In", new_user_session_path
                   %li
                     = link_to "Sign Up", new_user_registration_path
-    .container
-      %div{class: 'flashes group'}
-        - flash.each do |name, msg|
-          %div{ class: "alert alert-#{name == :notice ? "success" : "error"}"}
-            %a{ class: 'close', :'data-dismiss' => "alert" }
-            = msg
 
-      = yield
-      %hr
-        %footer
-          %p © Company 2012
     
+    #pjax-wrapper
+      = yield
+
+    #extra
+      .inner
+        .container
+          .row
+            .span4
+              %h3 
+                %span.slash //
+                Quick Links
+              %ul.footer-links.clearfix
+                %li= link_to "Home", "#"
+                %li= link_to "Plans", "#"
+                %li= link_to "Blog", "#"
+                %li= link_to "Demo", "#"
+              %ul.footer-links.clearfix
+                %li= link_to "Support", "#"
+                %li= link_to "Privacy Policy", "#"
+                %li= link_to "About", "#"
+                %li= link_to "FAQ", "#"
+            .span4
+              %h3
+                %span.slash //
+                Keep In Touch
+              %p Interested to see what we put out next?
+              %ul.social-icons-container
+                %li
+                  = link_to "Twitter", "http://twitter.com/adamfortuna", class: "social-icon social-icon-twitter"
+    #footer
+      .inner
+        .container
+          .row
+            #footer-copyright.san4
+              &copy; 2012 Adam Fortuna
+            #footer-terms.span8
+
     = javascript_include_tag "application"

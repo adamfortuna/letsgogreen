@@ -15,7 +15,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: demo_development
+  database: green_development
   pool: 5
   username: adam
   password:
@@ -41,7 +41,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: demo_test
+  database: green_test
   pool: 5
   username: adam
   password:

@@ -1,15 +1,24 @@
-.row
-  .span8
-    = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => 'form-horizontal' }) do |f|
-      %fieldset
-        %legend Sign Up
-        = f.input :email, hint: "This will also be your login"
-        = f.input :password
-        = f.input :password_confirmation, label: "Confirm password"
+#subheader
+  .inner
+    .container
+      %h1 Sign Up
+      %small
+        If you already have an account, just 
+        = link_to "sign in", new_session_path(resource_name)
 
-        .form-actions
-          = f.submit 'Sign Up', class: 'btn btn-primary'
-          = link_to 'Cancel', root_path, class: 'btn'
 
-  .span3
-    = render "links"
+#subpage
+  .container
+    = render 'shared/flashes'
+    .row
+      .span6.offset3
+        = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => 'form-horizontal well' }) do |f|
+          %fieldset
+            = f.input :email, hint: "You'll use this to login, and you'll need to confirm it, so use a real email address."
+            = f.input :password
+            = f.input :password_confirmation, label: "Confirm password"
+
+            %p By clicking "Sign Up", you agree to our #{link_to "terms of service", "#"} and to our #{link_to "privacy policy", "#"}.
+
+            .form-actions
+              = f.submit 'Sign Up', class: 'btn btn-primary btn-large'

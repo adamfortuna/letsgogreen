@@ -1,8 +1,103 @@
-.hero-unit
-  %h1 Hello, world!
-  %p Example page to stand out.
-  %p
-    =link_to "Learn More »", "#", class: 'btn btn-primary btn-large'
+#landing
+  .inner
+    .container
+      .row
+        .span4.landing-text
+          %h1 Simple Budget Tracking
+          %p This is a sample page for setting this up
+          %p.landing-actions
+            = link_to "Sign Up Now!", "#", class: "btn btn-large btn-inverse"
+            = link_to "Live Demos", "#", class: "btn btn-large"
+        .span8.landing-screenshot
+          = image_tag "screenshot.png"
 
+#content
+  .inner
+    .container
+      .row
+        .span8
+          %h3
+            %span.slash //
+            What You'll Get
 
-%p Find me in app/views/home/index.html.haml
+          %ul.features-list
+            %li.feature
+              .feature-thumbnail
+                .circle-icon
+                  %div
+                    %i.icon-list-alt
+              .feature-content
+                %h3 Simple Cash Flow
+                %p See how much money you're taking in and how much you're spending in simple terms.
+            %li.feature
+              .feature-thumbnail
+                .circle-icon
+                  %div
+                    %i.icon-flag
+              .feature-content
+                %h3 Manual Ledger Keeping
+                %p In a world of automated accounts, it may sounds backwords that you have to keep track of your spending, but studies show you spend less when you do.
+            %li.feature
+              .feature-thumbnail
+                .circle-icon
+                  %div
+                    %i.icon-flag
+              .feature-content
+                %h3 Manual Ledger Keeping
+                %p In a world of automated accounts, it may sounds backwords that you have to keep track of your spending, but studies show you spend less when you do.
+            %li.feature
+              .feature-thumbnail
+                .circle-icon
+                  %div
+                    %i.icon-flag
+              .feature-content
+                %h3 Manual Ledger Keeping
+                %p In a world of automated accounts, it may sounds backwords that you have to keep track of your spending, but studies show you spend less when you do.
+            %li.feature
+              .feature-thumbnail
+                .circle-icon
+                  %div
+                    %i.icon-flag
+              .feature-content
+                %h3 Manual Ledger Keeping
+                %p In a world of automated accounts, it may sounds backwords that you have to keep track of your spending, but studies show you spend less when you do.
+            %li.feature
+              .feature-thumbnail
+                .circle-icon
+                  %div
+                    %i.icon-flag
+              .feature-content
+                %h3 Manual Ledger Keeping
+                %p In a world of automated accounts, it may sounds backwords that you have to keep track of your spending, but studies show you spend less when you do.
+
+        .span4
+          %h3
+            %span.slash //
+            Testimonials
+            
+          %ul.testimonials-list
+            %li
+              .testimonial-avatar
+                .img
+                  = image_tag "avatar.png"
+              .testimonial-text
+                %p
+                  %span.testimonial-author John Doe
+                  Morbi a tellus tellus. Integer et ipsum ipsum, blandit pharetra nisl. In vitae lorem a magna.
+            %li
+              .testimonial-avatar
+                .img
+                  = image_tag "avatar.png"
+              .testimonial-text
+                %p
+                  %span.testimonial-author John Doe
+                  Morbi a tellus tellus. Integer et ipsum ipsum, blandit pharetra nisl. In vitae lorem a magna.
+            %li
+              .testimonial-avatar
+                .img
+                  = image_tag "avatar.png"
+              .testimonial-text
+                %p
+                  %span.testimonial-author John Doe
+                  Morbi a tellus tellus. Integer et ipsum ipsum, blandit pharetra nisl. In vitae lorem a magna.
+

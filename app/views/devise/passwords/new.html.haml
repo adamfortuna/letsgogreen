@@ -1,12 +1,19 @@
-.row
-  .span8
-    = simple_form_for resource, :as => resource_name, :url => password_path(resource_name), :html => { :class => 'form-horizontal' }  do |f|
-      %fieldset
-        %legend Forgot your password?
-        = f.input :email
-        .form-actions
-          = f.submit 'Send me reset password instructions', class: 'btn btn-primary'
-          = link_to 'Cancel', root_path, class: 'btn'
+#subheader
+  .inner
+    .container
+      %h1 Recover Your Password
+      %small
+        If you know it, you can 
+        = link_to "sign in", new_session_path(resource_name)
 
-  .span3
-    = render "links"
+#subpage
+  .container
+    = render 'shared/flashes'
+    .row
+      .span6.offset3
+        = simple_form_for resource, :as => resource_name, :url => password_path(resource_name), :html => { :class => 'form-horizontal well' }  do |f|
+          %fieldset
+            = f.input :email
+            .form-actions
+              = f.submit 'Send me reset password instructions', class: 'btn btn-primary'
+              = link_to 'Cancel', root_path, class: 'btn'

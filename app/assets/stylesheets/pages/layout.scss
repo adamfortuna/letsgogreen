@@ -1,0 +1,26 @@
+#subheader {
+  h1 {
+    float: left;
+  }
+
+  small {
+    color: #ddd;
+    font-size: 1.2em;
+    margin-left: 20px;
+    line-height: 44px;
+
+    a { 
+      color: #fff;
+    }
+  }
+}
+
+
+.navbar {
+  .navbar-text {
+    font-size: 14px;
+  }
+  .navbar-text a {
+    color: #677E30;
+  }
+}

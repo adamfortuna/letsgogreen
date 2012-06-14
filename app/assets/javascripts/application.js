@@ -13,4 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require jquery.pjax
 //= require_tree .
+
+$(function() {
+  $('a').pjax('#pjax-wrapper').live('click');
+});
