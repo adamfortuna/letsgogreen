@@ -1,0 +1,13 @@
+%tr
+  %td= link_to bill.payee, bill
+  %td= bill.title
+  %td= bill.date ? l(bill.date) : ''
+  %td= number_to_currency bill.monthly_amount
+  %td= number_to_currency bill.yearly_amount
+  %td= bill.schedule
+  %td
+    = link_to "edit", edit_bill_path(bill)
+    |
+    = link_to "delete", bill_path(bill), method: :destroy, confirm: "Are you sure you want to delete this budget? All expenses with this budget will now be associated with no budget."
+    |
+    = link_to "pay", pay_bill_path(bill)

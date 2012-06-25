@@ -1,0 +1,16 @@
+%tbody.income
+  %tr
+    %td= link_to "Income", "#", class: 'expand'
+    %td= number_to_currency 6000
+    %td= number_to_currency presenter.monthly_income
+    %td= number_to_currency presenter.yearly_income
+    %td= number_to_percentage(100, precision: 2)
+%tbody.income.nested
+  - presenter.incomes.each do |income|
+    %tr
+      %td{ colspan: '2' }
+        \--
+        = link_to income.from, income
+      %td= number_to_currency income.amount
+      %td= number_to_currency income.amount * 12
+      %td &nbsp;

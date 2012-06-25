@@ -1,0 +1,33 @@
+.well
+  %ul.nav.nav-list
+    %li.nav-header
+      Dashboard By Month
+    - presenter.months_with_expenses.each do |month|
+      %li
+        = link_to month.strftime("%B %Y"), expenses_path(start_date: month, end_date: month.end_of_month + 1.day)
+
+= link_to new_expense_path, class: "btn btn-success block" do
+  %i.icon-plus
+  Add New Expense
+%br/
+
+= link_to new_income_path, class: "btn btn-success block" do
+  %i.icon-plus
+  Add New Income
+%br/
+
+= link_to new_bill_path, class: "btn btn-success block" do
+  %i.icon-plus
+  Add New Bill
+%br/
+
+= link_to new_saving_path, class: "btn btn-success block" do
+  %i.icon-plus
+  Add New Saving
+%br/
+
+= link_to new_budget_path, class: "btn btn-success block" do
+  %i.icon-plus
+  Add New Budget
+%br/
+

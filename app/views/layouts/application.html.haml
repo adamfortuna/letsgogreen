@@ -2,7 +2,7 @@
 %html{ lang: "en"}
   %head
     %meta{ charset: "utf-8" }
-      %title Bootstrap, from Twitter
+      %title Go Green
       %meta{ content: "width=device-width, initial-scale=1.0", name: "viewport"}
       %meta{ content: "Simple Budgeting", name: "description"}
       %meta{ content: "Adam Fortuna", name: "author"}
@@ -25,10 +25,22 @@
 
           .nav-collapse
             %ul.nav
-              %li
-                = link_to "Home", root_path
-              %li
-                = link_to "About", about_path
+              - if user_signed_in?
+                %li
+                  = link_to "Dashboard", dashboard_path
+                %li
+                  = link_to "Savings", savings_path
+                %li
+                  = link_to "Income", incomes_path
+                %li
+                  = link_to "Bills", bills_path
+                %li
+                  = link_to "Budgets", budgets_path
+                %li
+                  = link_to "Expenses", expenses_path
+              - else
+                %li
+                  = link_to "About", about_path
             .navbar-text.pull-right
               - if user_signed_in?
                 %p.navbar-text.pull-right

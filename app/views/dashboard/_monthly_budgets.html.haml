@@ -1,0 +1,18 @@
+%tbody.budgets
+  %tr
+    %td= link_to "Monthly Budgets", "#", class: 'expand'
+    %td= number_to_currency presenter.monthly_budget_amount
+    %td= number_to_currency 0
+    %td= number_to_currency 0
+    %td= number_to_percentage(0, precision: 2)
+%tbody.budgets.nested
+  - presenter.monthly_budgets.each do |budget|
+    %tr
+      %td
+        \--
+        = link_to budget.title, budget
+      %td= number_to_currency budget.amount
+      %td= number_to_currency budget.expenses_amount_for(presenter.start_date, presenter.end_date)
+      %td= number_to_currency budget.expenses_amount_for(presenter.start_year, presenter.end_year)
+      %td= number_to_percentage(presenter.percent_of_income(budget.expenses_amount_for(presenter.start_year, presenter.end_year)), precision: 2)
+

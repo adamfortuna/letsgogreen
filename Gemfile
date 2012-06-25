@@ -4,6 +4,7 @@ ruby '1.9.3'
 
 gem 'rails', '3.2.5'
 gem 'pg'
+gem 'thin'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -15,7 +16,7 @@ end
 
 # Javascript Related
 gem 'jquery-rails'
-
+gem 'pjax_rails'
 
 # Form and front-end related
 gem 'haml', '>= 3.0.0'
@@ -25,6 +26,9 @@ gem 'simple_form'
 
 # Authentication
 gem 'devise'
+
+# Misc
+gem 'kaminari'
 
 group :development, :test do
   gem 'capybara'

@@ -1,0 +1,13 @@
+#subheader
+  .inner
+    .container
+      %h1 Edit Bill - #{name_for_bill(@bill)}
+
+#subpage
+  .container
+    = render 'shared/flashes'
+    .row
+      .span9
+        = render partial: 'form', locals: { bill: @bill }
+      .span3
+        = render partial: 'sidebar'

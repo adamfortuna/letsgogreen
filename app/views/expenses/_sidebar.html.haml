@@ -1,0 +1,25 @@
+= link_to new_expense_path, class: "btn btn-success block" do
+  %i.icon-plus
+  Add New Expense
+%br/
+
+.well
+  %ul.nav.nav-list
+    %li.nav-header
+      By Category
+    %li
+      = link_to "One off Expenses", expenses_path(categoty: "once")
+    %li
+      = link_to "Monthly Expenses", expenses_path(category: "monthly")
+    %li
+      = link_to "Yearly Expenses", expenses_path(category: "yearly")
+
+    %li.nav-header
+      Expenses By Month
+    %li
+      = link_to "June 2012", expenses_path(month: "2012-06")
+    %li
+      = link_to "May 2012", expenses_path(month: "2012-05")
+    %li
+      = link_to "April 2012", expenses_path(month: "2012-04")
+

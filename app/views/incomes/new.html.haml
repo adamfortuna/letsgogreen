@@ -1,0 +1,21 @@
+#subheader
+  .inner
+    .container
+      %h1 New Income
+
+#subpage
+  .container
+    = render 'shared/flashes'
+    .row
+      .span9
+        = simple_form_for(@income, html: { class: 'form-horizontal well' }) do |f|
+          %fieldset
+            = f.input :from, label: 'Income From', hint: "Who paid you?"
+            = f.input :amount, as: :currency
+            = f.input :date, as: :date_picker
+            = f.input :description, input_html: { rows: 3 }
+
+            .form-actions
+              = f.submit 'Create Income', class: 'btn btn-primary btn-large'
+      .span3
+        = render partial: 'sidebar'

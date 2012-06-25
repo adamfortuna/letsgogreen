@@ -1,0 +1,15 @@
+#subheader
+  .inner
+    .container
+      %h1
+        Pay Bill:
+        = @bill.display_title
+
+#subpage
+  .container
+    = render 'shared/flashes'
+    .row
+      .span9
+        = render partial: 'expenses/form', locals: { expense: @expense }
+      .span3
+        = render partial: 'sidebar'

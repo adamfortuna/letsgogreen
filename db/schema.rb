@@ -11,7 +11,64 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120309215145) do
+ActiveRecord::Schema.define(:version => 20120625030146) do
+
+  create_table "bills", :force => true do |t|
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "user_id",         :null => false
+    t.string   "payee",           :null => false
+    t.decimal  "amount",          :null => false
+    t.date     "date"
+    t.text     "description"
+    t.string   "schedule"
+    t.string   "title"
+    t.boolean  "variable_amount"
+  end
+
+  create_table "budgets", :force => true do |t|
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "user_id",     :null => false
+    t.string   "title",       :null => false
+    t.decimal  "amount",      :null => false
+    t.text     "description"
+    t.string   "schedule",    :null => false
+  end
+
+  create_table "expenses", :force => true do |t|
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "user_id",          :null => false
+    t.string   "payee",            :null => false
+    t.decimal  "amount",           :null => false
+    t.date     "date",             :null => false
+    t.text     "description"
+    t.integer  "accountable_id"
+    t.string   "accountable_type"
+  end
+
+  create_table "incomes", :force => true do |t|
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "user_id",     :null => false
+    t.string   "from",        :null => false
+    t.decimal  "amount",      :null => false
+    t.date     "date",        :null => false
+    t.text     "description"
+  end
+
+  create_table "savings", :force => true do |t|
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.integer  "user_id",                                   :null => false
+    t.string   "title",                                     :null => false
+    t.decimal  "amount",                                    :null => false
+    t.text     "description"
+    t.string   "schedule"
+    t.boolean  "variable_amount"
+    t.boolean  "from_before_tax_income", :default => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

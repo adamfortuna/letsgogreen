@@ -1,0 +1,27 @@
+#subheader
+  .inner
+    .container
+      %h1
+        Expense to
+        = @expense.payee
+
+#subpage
+  .container
+    = render 'shared/flashes'
+    .row
+      .span9
+        %p
+          %strong Payee
+          = @expense.payee
+        %p
+          %strong Amount
+          = number_to_currency(@expense.amount)
+        %p
+          %strong Date
+          = @expense.date
+        %p
+          %strong Description
+          = @expense.description
+
+      .span3
+        = render partial: 'sidebar'

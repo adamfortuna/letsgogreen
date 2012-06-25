@@ -1,0 +1,13 @@
+#subheader
+  .inner
+    .container
+      %h1 New Expense
+
+#subpage
+  .container
+    = render 'shared/flashes'
+    .row
+      .span9
+        = render partial: 'form', locals: { expense: @expense }
+      .span3
+        = render partial: 'sidebar'

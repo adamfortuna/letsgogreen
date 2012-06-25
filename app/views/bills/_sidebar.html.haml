@@ -1,0 +1,13 @@
+= link_to new_bill_path, class: "btn btn-success block" do
+  %i.icon-plus
+  Add New Bill
+%br/
+
+.well
+  %ul.nav.nav-list
+    %li.nav-header
+      By Schedule
+    %li
+      = link_to "Monthly Bills", bills_path(schedule: "monthly")
+    %li
+      = link_to "Yearly Bills", bills_path(schedule: "yearly")

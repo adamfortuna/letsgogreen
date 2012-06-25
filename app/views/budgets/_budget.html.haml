@@ -1,0 +1,12 @@
+%tr
+  %td= budget.title
+  %td= number_to_currency budget.amount
+  %td= AmountCalculator.amount_for_time_period(budget.expenses, Time.now.beginning_of_month, Time.now.end_of_month)
+  %td= AmountCalculator.amount_for_time_period(budget.expenses, Time.now.beginning_of_month, Time.now.end_of_month)
+  %td= budget.schedule
+  %td
+    = link_to "edit", edit_budget_path(budget)
+    | 
+    = link_to "expenses", expenses_path(budget_id: budget.id)
+    |
+    = link_to "delete", budget_path(budget), method: :delete, confirm: "Are you sure you want to delete this expense?"

@@ -1,0 +1,13 @@
+= simple_form_for(expense, html: { class: 'form-horizontal well' }) do |f|
+  %fieldset
+    = f.input :payee, label: 'Paid To', hint: "Who was this expense paid to?"
+    = f.input :amount, as: :currency
+    = f.input :date, as: :date_picker
+    = f.input :description, input_html: { rows: 3 }
+    
+
+    = f.input :accountable_id_and_type, label: 'Account', as: :grouped_select, collection: accountables_for(current_user), group_method: :last, label_method: :first, value_method: :last
+
+
+    .form-actions
+      = f.submit 'Save Expense', class: 'btn btn-primary btn-large'

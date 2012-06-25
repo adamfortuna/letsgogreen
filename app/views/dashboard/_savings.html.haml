@@ -1,0 +1,16 @@
+%tbody.savings
+  %tr
+    %td= link_to "Savings", "#", class: 'expand'
+    %td= number_to_currency 1200
+    %td= number_to_currency presenter.monthly_savings_amount
+    %td= number_to_currency presenter.yearly_savings_amount
+    %td= number_to_percentage(presenter.savings_percentage, precision: 2)
+%tbody.savings.nested
+  - presenter.savings.each do |saving|
+    %tr
+      %td{colspan: 2}
+        \--
+        = link_to saving.title, saving
+      %td= number_to_currency saving.monthly_amount
+      %td= number_to_currency saving.yearly_amount
+      %td= number_to_percentage(presenter.percent_of_income(saving.yearly_amount), precision: 2)

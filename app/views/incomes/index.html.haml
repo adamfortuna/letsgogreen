@@ -1,0 +1,24 @@
+#subheader
+  .inner
+    .container
+      %h1 Income
+
+
+#subpage
+  .container
+    .row
+      .span9
+        %table.table.incomes
+          %thead
+            %tr
+              %th From
+              %th Amount
+              %th Date
+          %tbody
+            - @incomes.each do |income|
+              %tr
+                %td= income.from
+                %td= number_to_currency(income.amount)
+                %td= income.date
+      .span3
+        = render partial: 'incomes/sidebar'

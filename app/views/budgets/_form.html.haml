@@ -1,0 +1,9 @@
+= simple_form_for(budget, html: { class: 'form-horizontal well' }) do |f|
+  %fieldset
+    = f.input :title
+    = f.input :amount, as: :currency
+    = f.input :description, input_html: { rows: 3 }
+    = f.input :schedule, collection: Saving::SCHEDULES, default: Saving.default_schedule
+
+    .form-actions
+      = f.submit 'Save Budget', class: 'btn btn-primary btn-large'

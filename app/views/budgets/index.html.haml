@@ -1,0 +1,23 @@
+#subheader
+  .inner
+    .container
+      %h1 Budgets
+
+#subpage
+  .container
+    .row
+      .span9
+        %table.table.savings
+          %thead
+            %tr
+              %th Title
+              %th Budgeted
+              %th Spent this Month
+              %th Spent this Year
+              %th Schedule
+          
+          %tbody.income
+            = render @budgets
+
+      .span3
+        = render partial: 'sidebar'

@@ -1,0 +1,6 @@
+%tr
+  %td= link_to(saving.title, saving)
+  %td= number_to_currency saving.amount
+  %td= saving.schedule
+  %td
+    = link_to "edit", edit_saving_path(saving)

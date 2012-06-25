@@ -22,7 +22,11 @@ module Demo
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    # config.autoload_paths += %W(#{config.root}/extras)
+    
+    config.autoload_paths += %w[
+      app/presenters
+      lib/green
+    ].collect { |dir| config.root.join(dir) }.select { |dir| dir.directory? }
 
     # Activate observers that should always be running.
     # config.active_record.observers = :cacher, :garbage_collector, :forum_observer

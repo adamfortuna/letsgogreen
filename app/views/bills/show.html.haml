@@ -1,0 +1,49 @@
+#subheader
+  .inner
+    .container
+      %h1 Bills
+
+#subpage
+  .container
+    .row
+      .span9
+
+        %dl
+          %dt Payee
+          %dd= @bill.payee
+          - unless @bill.title.blank?
+            %dt Title
+            %dd= @bill.title
+          - if @bill.date?
+            %dt Date
+            %dd= l(@bill.date)
+          %dt Schedule
+          %dd= @bill.schedule
+
+          %dt Monthly Bill Amount
+          %dd= @bill.monthly_amount
+
+          %dt Yearly Bill Amount
+          %dd= @bill.yearly_amount
+
+          %dt Percentage of total income?
+
+          %dt Total amount spent this year?
+          %dt Total amount spent ever?
+
+
+        - if @expenses.any?
+          %h3 Most Recent Paid Bills
+          %table
+            %tr
+              %th Payee
+              %th Date
+              %th Amount
+            - @expenses.each do |expense|
+              %tr
+                %td= expense.payee
+                %td= expense.payee
+                %td= expense.payee
+
+      .span3
+        = render partial: 'sidebar'

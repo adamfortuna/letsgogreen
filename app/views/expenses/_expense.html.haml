@@ -1,0 +1,10 @@
+%tr 
+  %td= expense.payee
+  %td= expense.accountable ? link_to(expense.accountable, polymorphic_path(expense.accountable)) : "-"
+  %td= number_to_currency(expense.amount)
+  %td= expense.date
+  %td
+    = link_to "Edit", edit_expense_path(expense)
+    |
+    = link_to "Delete", expense_path(expense), method: :delete, confirm: "Are you sure you want to delete this expense?"
+

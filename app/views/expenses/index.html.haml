@@ -1,0 +1,22 @@
+#subheader
+  .inner
+    .container
+      %h1 Expenses
+
+#subpage
+  .container
+    .row
+      .span9
+        %table.table.expenses
+          %thead
+            %tr
+              %th Expense
+              %th Account
+              %th Amount
+              %th Date
+              %th Actions
+          
+          %tbody
+            = render @expenses
+      .span3
+        = render partial: 'sidebar'

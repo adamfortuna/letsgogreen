@@ -14,8 +14,10 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require jquery.pjax
+//= require bootstrap-datepicker
 //= require_tree .
 
 $(function() {
-  $('a').pjax('#pjax-wrapper').live('click');
+  // $('a').pjax('#pjax-wrapper').live('click');
+  $(".date_picker input").datepicker();
 });

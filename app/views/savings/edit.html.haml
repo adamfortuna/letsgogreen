@@ -1,0 +1,13 @@
+#subheader
+  .inner
+    .container
+      %h1 Edit Savings - #{@saving.title}
+
+#subpage
+  .container
+    = render 'shared/flashes'
+    .row
+      .span9
+        = render partial: 'form', locals: { saving: @saving }
+      .span3
+        = render partial: 'sidebar'

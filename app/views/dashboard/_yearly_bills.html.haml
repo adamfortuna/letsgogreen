@@ -1,0 +1,17 @@
+%tbody.yearly-bills
+  %tr
+    %td= link_to "Yearly Bills", "#", class: 'expand'
+    %td= number_to_currency 5000 / 12
+    %td= number_to_currency presenter.yearly_bills_amount_monthly
+    %td= number_to_currency presenter.yearly_bills_amount
+    %td= number_to_percentage(presenter.yearly_bills_percentage, precision: 2)
+%tbody.monthly-bills.nested
+  - presenter.yearly_bills.each do |bill|
+    %tr
+      %td
+        \--
+        = name_for_bill(bill)
+      %td= number_to_currency bill.amount / 12
+      %td= number_to_currency bill.amount / 12
+      %td= number_to_currency bill.amount
+      %td= number_to_percentage(presenter.percent_of_income(bill.amount), precision: 2)

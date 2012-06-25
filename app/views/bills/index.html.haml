@@ -1,0 +1,24 @@
+#subheader
+  .inner
+    .container
+      %h1 Bills
+
+#subpage
+  .container
+    .row
+      .span9
+        %table.table.bills
+          %thead
+            %tr
+              %th Payee
+              %th Bill
+              %th Date
+              %th Monthly Amount
+              %th Yearly Amount
+              %th Schedule
+          
+          %tbody.income
+            = render @bills
+
+      .span3
+        = render partial: 'sidebar'

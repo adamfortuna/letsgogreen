@@ -2,4 +2,19 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  date:
+    formats:
+      default: '%-m/%d/%Y'
+
+    # Used in date_select and datetime_select.
+    order:
+      - :month
+      - :day
+      - :year
+  time:
+    formats:
+      auction: '%m/%d/%Y %I:%M:%S %p PT'
+      default: '%b %d, %Y at %I:%M%p'
+      with_timezone: '%b %d, %Y at %I:%M%p %Z'
+      iso8601: '%Y-%m-%dT%H:%M:%S%z'
+
