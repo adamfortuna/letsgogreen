@@ -6,7 +6,13 @@ class ExpensesController < ApplicationController
 
   def index
     @expenses = current_user.expenses.order("date desc")
-    @expenses = @expenses.where(budget_id: params[:budget_id]) if params[:budget_id]
+    if params[:budget_id]
+      @expenses = @expenses.where(accountable_type: 'Budget', accountable_id: params[:budget_id])
+    elsif params[:accountable_type] != "none"
+      @expenses = @expenses.where(accountable_type: params[:accountable_type])
+    elsif params[:accountable_type] == "none"
+      @expenses = @expenses.where(accountable_type: nil)
+    end
     @expenses = @expenses.page(params[:page] || 1).per(50)
   end
 
@@ -16,8 +22,6 @@ class ExpensesController < ApplicationController
 
   def create
     @expense = current_user.expenses.new(params[:expense])
-
-    debugger
     
     if @expense.save
       redirect_to expenses_path

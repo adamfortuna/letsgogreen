@@ -10,11 +10,23 @@ module Scheduleable
     end
 
     def monthly_amount
-      monthly? ? amount : (amount/12)
+      if monthly?
+        amount
+      elsif yearly?
+        amount/12
+      else
+        amount
+      end
     end
 
     def yearly_amount
-      yearly? ? amount : (amount * 12)
+      if yearly?
+        amount
+      elsif monthly?
+        amount * 12
+      else
+        amount
+      end
     end
   end
 end

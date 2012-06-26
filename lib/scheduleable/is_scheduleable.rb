@@ -7,7 +7,6 @@ module Scheduleable
       attr_accessible :amount, :schedule
 
       validates :amount, presence: true
-      validates :schedule, presence: true, inclusion: { in: schedules }
 
       self.schedules.each do |schedule|
         send :scope, schedule.downcase.to_sym, where(schedule: schedule)

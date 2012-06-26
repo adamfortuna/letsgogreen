@@ -1,6 +1,6 @@
 %tr 
   %td= expense.payee
-  %td= expense.accountable ? link_to(expense.accountable, polymorphic_path(expense.accountable)) : "-"
+  %td= expense.accountable ? link_to(expense.accountable, polymorphic_path(expense.accountable)) : ""
   %td= number_to_currency(expense.amount)
   %td= expense.date
   %td

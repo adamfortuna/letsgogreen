@@ -10,6 +10,7 @@ class Bill < ActiveRecord::Base
 
 
   is_scheduleable
+  validates :schedule, presence: true, inclusion: { in: schedules }
 
   def to_s
     "Bill: #{display_title}"

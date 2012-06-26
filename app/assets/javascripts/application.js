@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require bootstrap-setup
 //= require jquery.pjax
 //= require bootstrap-datepicker
 //= require_tree .

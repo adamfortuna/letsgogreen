@@ -1,0 +1,10 @@
+= simple_form_for(income, html: { class: 'form-horizontal well' }) do |f|
+  %fieldset
+    = f.input :name, label: 'Income From', hint: "Who paid you?"
+    = f.input :amount, as: :currency
+    = f.input :date, as: :date_picker
+    = f.input :schedule, collection: Saving::SCHEDULES, hint: "Should this income repeat?"
+    = f.input :description, input_html: { rows: 3 }
+
+    .form-actions
+      = f.submit 'Save Income', class: 'btn btn-primary btn-large'

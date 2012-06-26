@@ -8,18 +8,18 @@
     %li.nav-header
       By Category
     %li
-      = link_to "One off Expenses", expenses_path(categoty: "once")
+      = link_to "Budgeted Expenses", expenses_path(accountable_type: "Budget")
     %li
-      = link_to "Monthly Expenses", expenses_path(category: "monthly")
+      = link_to "Bills Expenses", expenses_path(accountable_type: "Bill")
     %li
-      = link_to "Yearly Expenses", expenses_path(category: "yearly")
+      = link_to "Uncategorized Expenses", expenses_path(accountable_type: "none")
 
     %li.nav-header
       Expenses By Month
     %li
-      = link_to "June 2012", expenses_path(month: "2012-06")
+      = link_to "June 2012", expenses_path(start_date: "2012-06")
     %li
-      = link_to "May 2012", expenses_path(month: "2012-05")
+      = link_to "May 2012", expenses_path(start_date: "2012-05")
     %li
-      = link_to "April 2012", expenses_path(month: "2012-04")
+      = link_to "April 2012", expenses_path(start_date: "2012-04")
 
