@@ -8,10 +8,10 @@ class ExpensesController < ApplicationController
     @expenses = current_user.expenses.order("date desc")
     if params[:budget_id]
       @expenses = @expenses.where(accountable_type: 'Budget', accountable_id: params[:budget_id])
-    # elsif params[:accountable_type] != "none"
-    #   @expenses = @expenses.where(accountable_type: params[:accountable_type])
     elsif params[:accountable_type] == "none"
       @expenses = @expenses.where(accountable_type: nil)
+    elsif params[:accountable_type]
+      @expenses = @expenses.where(accountable_type: params[:accountable_type])
     end
     @expenses = @expenses.page(params[:page] || 1).per(50)
   end
