@@ -2,3 +2,11 @@
   %i.icon-plus
   Add New Income
 %br/
+
+.well
+  %dl
+    %dt Monthly Income
+    %dd= @presenter.monthly_total
+
+    %dt Yearly Income
+    %dd= @presenter.yearly_total

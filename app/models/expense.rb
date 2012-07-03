@@ -4,8 +4,6 @@ class Expense < ActiveRecord::Base
   belongs_to :user
   belongs_to :accountable, polymorphic: true
 
-  after_initialize :set_default_date
-
   validates :payee, presence: true
   validates :amount, presence: true
   validates :date, presence: true
@@ -17,9 +15,4 @@ class Expense < ActiveRecord::Base
   def accountable_id_and_type=(account_and_type)
     self.accountable_type, self.accountable_id = account_and_type.split("-")
   end
-
-  def set_default_date
-    self.date ||= Date.today.strftime('%m/%d/%Y')
-  end
-  private :set_default_date
 end

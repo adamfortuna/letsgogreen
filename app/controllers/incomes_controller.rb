@@ -4,7 +4,8 @@ class IncomesController < ApplicationController
   before_filter :parse_date, only: [:create, :update]
 
   def index
-    @incomes = current_user.incomes.order("date desc")
+    incomes = current_user.incomes.order("date desc")
+    @presenter = IncomesPresenter.new(incomes, self)
   end
 
   def new

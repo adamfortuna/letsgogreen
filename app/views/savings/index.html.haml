@@ -11,11 +11,12 @@
           %thead
             %tr
               %th Title
-              %th Amount
+              %th Monthly Amount
+              %th Yearly Amount
               %th Schedule
           
           %tbody.income
-            = render @savings
+            = render @presenter.savings
 
       .span3
         = render partial: 'sidebar'

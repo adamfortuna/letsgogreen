@@ -1,7 +1,9 @@
 #subheader
   .inner
     .container
-      %h1 Budgets
+      %h1
+        Budgets:
+        = @presenter.period_name
 
 #subpage
   .container
@@ -11,13 +13,12 @@
           %thead
             %tr
               %th Title
-              %th Budgeted
-              %th Spent this Month
-              %th Spent this Year
+              %th Spent Month / Budgeted
+              %th Spent Year / Budgeted
               %th Schedule
           
           %tbody.income
-            = render @budgets
+            = render @presenter.budget_presenters
 
       .span3
         = render partial: 'sidebar'

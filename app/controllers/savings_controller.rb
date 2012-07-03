@@ -2,7 +2,8 @@ class SavingsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @savings = current_user.savings.order("amount desc").page(params[:page] || 1).per(50)
+    savings = current_user.savings.order("amount desc")
+    @presenter = SavingsPresenter.new(savings, self)
   end
 
   def new

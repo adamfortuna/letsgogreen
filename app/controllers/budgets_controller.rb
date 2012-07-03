@@ -3,7 +3,11 @@ class BudgetsController < ApplicationController
   before_filter :set_budget, only: [:show, :edit, :update, :destroy]
 
   def index
-    @budgets = current_user.budgets.order(:title).page(params[:page] || 1).per(50)
+    budgets = current_user.budgets.order(:title)
+    @presenter = BudgetsPresenter.new(budgets, self, { 
+        start_date: Date.today.beginning_of_month, 
+        end_date: Date.today.end_of_month
+    })
   end
 
   def new
@@ -21,6 +25,7 @@ class BudgetsController < ApplicationController
   end
 
   def show
+    @budget = BudgetPresenter.new(@budget, self)
   end
 
   def edit

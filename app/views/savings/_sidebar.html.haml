@@ -4,5 +4,9 @@
 %br/
 
 .well
-  %ul.nav.nav-list
-    
+  %dl
+    %dt Monthly Total
+    %dd= number_to_currency @presenter.monthly_total
+
+    %dt Yearly Total
+    %dd= number_to_currency @presenter.yearly_total

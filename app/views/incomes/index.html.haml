@@ -16,11 +16,11 @@
               %th Schedule
               %th Controls
           %tbody
-            = render @incomes
+            = render @presenter.incomes
           %tfoot
             %th Totals
-            %th= number_to_currency @incomes.inject(0) { |total, income| total + income.monthly_amount }
-            %th= number_to_currency @incomes.inject(0) { |total, income| total + income.yearly_amount }
+            %th= number_to_currency @presenter.monthly_total
+            %th= number_to_currency @presenter.yearly_total
             %th{ colspan: 3} &nbsp;
 
       .span3

@@ -4,5 +4,21 @@
 %br/
 
 .well
-  %ul.nav.nav-list
+  %dl
+    %dt Date Range
+    %dd
+      = @presenter.start_date
+      to
+      = @presenter.end_date
+
+    %dt Amount Spend:
+    %dd= number_to_currency @presenter.expense_total
+
+    %dt Monthly Budget:
+    %dd= number_to_currency @presenter.monthly_budget
+
+    %dt Yearly Budget
+    %dd= number_to_currency @presenter.yearly_budget
+
+
     
