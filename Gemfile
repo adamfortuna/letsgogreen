@@ -22,7 +22,6 @@ gem 'pjax_rails'
 # Form and front-end related
 gem 'haml', '>= 3.0.0'
 gem 'haml-rails'
-# gem 'nested_form', git: 'https://github.com/ryanb/nested_form.git'
 gem 'simple_form'
 
 # Authentication
