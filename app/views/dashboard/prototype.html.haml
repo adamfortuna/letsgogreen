@@ -1,0 +1,103 @@
+#subheader
+  .inner
+    .container
+      %h1 Dashboard - June 2012
+
+#subpage
+  .container
+    .row
+      .span9
+        %table.table.expenses
+          %thead
+            %tr
+              %th From
+              %th Schedule
+              %th Monthly Estimate
+              %th Monthly Amount
+              %th Difference
+              %th YTD Amount
+          %tbody.income
+            %tr.credit
+              %td
+                = link_to "#", class: 'expand' do
+                  %i.icon-money
+                  Income
+              %td July 2012
+              %td.amount $6,233.00
+              %td.amount $9,300.00
+              %td.credit +$3,300.00
+              %td.amount $9,300.00
+          %tbody.income.nested
+            %tr.credit
+              %td EnvyLabs Paycheck
+              %td Monthly
+              %td.amount $6,000.00
+              %td.amount $9,300.00
+              %td.credit +$3,300.00
+              %td.amount $9,300.00
+            %tr.credit
+              %td Income Tax Return
+              %td Yearly
+              %td.amount= number_to_currency(2800/12)
+              %td.amount $0.00
+              %td.credit +$0.00
+              %td.credit $2,800.00
+
+          %tbody.savings
+            %tr.credit
+              %td
+                = link_to "#", class: 'expand' do
+                  %i.icon-money
+                  Savings
+              %td July 2012
+              %td.amount $1,816.00
+              %td.amount $750.00
+              %td.debit -$650.00
+              %td.credit $5,750.00
+          %tbody.income.nested
+            %tr.credit
+              %td Vanguard Brokerage
+              %td Monthly
+              %td.amount $1,400.00
+              %td.amount $750.00
+              %td.debit -$650.00
+              %td.amount $750.00
+            %tr.credit
+              %td Vanguard Roth IRA
+              %td Yearly
+              %td.amount= number_to_currency(5000/12)
+              %td.amount $0.00
+              %td.credit +$0.00
+              %td.credit $5,000.00
+
+
+          %tbody.bills
+            %tr.debit
+              %td
+                = link_to "#", class: 'expand' do
+                  %i.icon-money
+                  Bills
+              %td July 2012
+              %td.amount $1,816.00
+              %td.amount $750.00
+              %td.debit -$650.00
+              %td.credit $5,750.00
+          %tbody.income.nested
+            %tr.debit
+              %td AT&T
+              %td Monthly
+              %td.amount -$88.60
+              %td.amount -$88.60
+              %td.credit +$0.00
+              %td.amount -$88.60
+            %tr.debit
+              %td AAA
+              %td Yearly
+              %td.amount= number_to_currency(-99/12)
+              %td.amount -$0.00
+              %td.credit +$0.00
+              %td.debit -$99.00
+
+
+      .span3
+        

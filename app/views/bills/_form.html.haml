@@ -1,9 +1,8 @@
 = simple_form_for(bill, html: { class: 'form-horizontal well' }) do |f|
   %fieldset
-    = f.input :payee, label: 'Paid To', hint: "The company this was paid to, or any identifier for you to keep track of this expense."
-    = f.input :title, hint: "Name of this bill. If left out, we'll just show this as the payee."
+    = f.input :title, label: 'Paid To', hint: "The company this was paid to, or any identifier for you to keep track of this expense."
+    = f.input :alias, hint: "Name of this bill. If left out, we'll just show this as the payee."
     = f.input :amount, as: :currency
-    = f.input :date, as: :date_picker
     = f.input :variable_amount
     = f.input :description, input_html: { rows: 3 }
     = f.input :schedule, collection: Bill.schedules, default: Bill.default_schedule

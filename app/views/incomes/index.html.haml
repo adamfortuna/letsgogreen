@@ -5,6 +5,12 @@
 #subpage
   .container
     .row
+      .span9.well
+        %h2 Income
+        %p We'll base how much you should spend and save based on your monthly income. Try to estimate out exactly how much you plan to make per month. Later on, you'll add your individual paychecks and other income.
+        %p This should be your after tax pay too - that's what you actually have to work with.
+        %p= link_to "close this", "#"
+    .row
       .span9
         %table.table.incomes
           %thead
@@ -12,7 +18,6 @@
               %th From
               %th Monthly Amount
               %th Yearly Amount
-              %th Date
               %th Schedule
               %th Controls
           %tbody

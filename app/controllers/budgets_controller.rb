@@ -41,9 +41,9 @@ class BudgetsController < ApplicationController
 
   def destroy
     if @budget.destroy
-      redirect_to expenses_path flash: { notice: "Your budget was deleted." }
+      redirect_to budgets_path, flash: { notice: "Your budget was deleted." }
     else
-      redirect_to expenses_path flash: { alert: "There was a problem deleting this budget." }
+      redirect_to budgets_path, flash: { alert: "There was a problem deleting this budget." }
     end
   end
 

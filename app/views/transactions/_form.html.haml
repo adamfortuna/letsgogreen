@@ -1,0 +1,12 @@
+= simple_form_for(transaction, as: :transaction, url: transaction.new_record? ? transactions_path : transaction_path(transaction), method: transaction.new_record? ? :post : :put, html: { class: 'form-horizontal well' }) do |f|
+  %fieldset
+    = f.input :type, as: :radio, collection: [["I spent money","Debit"], ["I saved money","Savings"], ["I earned money", "Credit"]], value_method: :last, default: "Debit", label: ""
+    = f.input :category_id, label: 'Category', as: :grouped_select, collection: categories_for(current_user), group_method: :last, label_method: :first, value_method: :last
+    = f.input :title, hint: "Who was this paid to? Or income from?"
+    = f.input :amount, as: :currency
+    = f.input :date, as: :date_picker
+    = f.input :description, input_html: { rows: 3 }
+
+    .form-actions
+      = f.submit 'Save Transaction', class: 'btn btn-primary btn-large'
+

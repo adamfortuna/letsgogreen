@@ -17,7 +17,7 @@ class Dashboard
 
 
   def months_with_expenses
-    @user.expenses.select("date_part('month', date) AS month, date_part('year', date) AS year").group("date_part('month', date), date_part('year', date)").collect do |expense|
+    @user.credits.select("date_part('month', date) AS month, date_part('year', date) AS year").group("date_part('month', date), date_part('year', date)").collect do |expense|
       Date.strptime "#{expense.month}/1/#{expense.year}", '%m/%d/%Y'
     end.sort.reverse
   end
@@ -26,47 +26,81 @@ class Dashboard
     amount / yearly_income * 100
   end
 
+
   def incomes
-    @incomes ||= @user.incomes.where(date: Time.now.beginning_of_month..Time.now.end_of_month).order(:amount)
+    @incomes ||= @user.incomes.order(:title)
   end
-  def monthly_income
-    @monthly_income ||= incomes.sum(:amount)
+  def monthly_income_estimate
+    @monthly_income_estimate ||= incomes.inject(0) { |total, i| total + i.monthly_amount } 
   end
-  def yearly_income
-    @yearly_income ||= monthly_income * 12
+  def monthly_income_amount
+    @monthly_income ||= @user.credits.where(date: @start_date..@end_date).sum(:amount)
+  end
+
+  def monthly_income_for(income)
+    @monthly_income_for ||= {}
+    @monthly_income_for[income.id] ||= income.transactions.where(date: @start_date..@end_date).sum(:amount)
   end
 
 
 
   def savings
-    @savings ||= @user.savings.order("amount desc")
+    @savings ||= @user.savings.order(:title)
+  end
+  def monthly_savings_estimate
+    @monthly_savings_estimate ||= savings.inject(0) { |total, i| total + i.monthly_amount }  * -1
   end
   def monthly_savings_amount
-    @monthly_savings_amount ||= yearly_savings_amount / 12
+    @monthly_savings_amount ||=  savings.collect { |s| monthly_savings_for(s) }.sum * -1
   end
-  def yearly_savings_amount
-    @yearly_savings_amount ||= savings.collect(&:yearly_amount).sum
+  def monthly_savings_for(saving)
+    @monthly_savings_for ||= {}
+    @monthly_savings_for[saving.id] ||= if saving.monthly?
+      saving.transactions.savings.where(date: @start_date..@end_date).sum(:amount)
+    else
+      saving.transactions.savings.where(date: @start_date.beginning_of_year..@end_date.end_of_year).sum(:amount) / 12
+    end
   end
-  def savings_percentage
-    yearly_savings_amount / yearly_income * 100
-  end
-
 
 
 
   def monthly_bills
     @monthly_bills ||= @user.bills.monthly.order("amount desc")
   end
+  def monthly_bills_estimate
+    @monthly_bills_estimate ||= monthly_bills.inject(0) { |total, i| total + i.monthly_amount }  * -1
+  end
   def monthly_bills_amount
-    @monthly_bills_amount ||= monthly_bills.sum(:amount)
+    @monthly_bills_amount ||= monthly_bills.collect { |s| monthly_bills_for(s) }.sum * -1
   end
-  def monthly_bills_yearly_amount
-    @monthly_bills_yearly_amount ||= monthly_bills_amount * 12
-  end
-  def monthly_bills_percentage
-    monthly_bills_yearly_amount / yearly_income * 100
+  def monthly_bills_for(bill)
+    @monthly_bills_for ||= {}
+    @monthly_bills_for[bill.id] ||= if bill.monthly?
+      bill.transactions.bills.where(date: @start_date..@end_date).sum(:amount)
+    else
+      bill.transactions.bills.where(date: @start_date.beginning_of_year..@end_date.end_of_year).sum(:amount) / 12
+    end
   end
 
+
+
+  def monthly_budgets
+    @monthly_budgets ||= @user.budgets.monthly.order(:title)
+  end
+  def monthly_budgets_estimate
+    @monthly_budgets_estimate ||= monthly_budgets.inject(0) { |total, i| total + i.monthly_amount }  * -1
+  end
+  def monthly_budgets_amount
+    @monthly_budgets_amount ||= monthly_budgets.collect { |s| monthly_budgets_for(s) }.sum * -1
+  end
+  def monthly_budgets_for(budget)
+    @monthly_budgets_for ||= {}
+    @monthly_budgets_for[budget.id] ||= if budget.monthly?
+      budget.transactions.budgets.where(date: @start_date..@end_date).sum(:amount)
+    else
+      budget.transactions.budgets.where(date: @start_date.beginning_of_year..@end_date.end_of_year).sum(:amount) / 12
+    end
+  end
 
 
   def yearly_bills
@@ -106,7 +140,7 @@ class Dashboard
   end
 
   def budget_total
-    monthly_income - monthly_savings_amount - monthly_bills_amount - yearly_bills_amount_monthly - monthly_budget_amount
+    monthly_income_amount - monthly_savings_amount - monthly_bills_amount - yearly_bills_amount_monthly - monthly_budget_amount
   end
   def monthly_total
     5423

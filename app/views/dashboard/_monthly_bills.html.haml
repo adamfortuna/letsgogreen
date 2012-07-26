@@ -1,17 +1,15 @@
 %tbody.monthly-bills
-  %tr
+  %tr.debit
     %td= link_to "Monthly Bills", "#", class: 'expand'
-    %td= number_to_currency 2000
-    %td= number_to_currency presenter.monthly_bills_amount
-    %td= number_to_currency presenter.monthly_bills_yearly_amount
-    %td= number_to_percentage(presenter.monthly_bills_percentage, precision: 2)
+    %td.amount= number_to_currency presenter.monthly_bills_estimate
+    %td.amount= number_to_currency presenter.monthly_bills_amount
+    %td= raw credit_or_debit(presenter.monthly_bills_amount - presenter.monthly_bills_estimate)
 %tbody.monthly-bills.nested
-  - presenter.monthly_bills.each do |bill|
-    %tr
+  - presenter.monthly_bill_presenters.each do |bill|
+    %tr.debit
       %td
         \--
         = link_to name_for_bill(bill), bill
-      %td= number_to_currency bill.amount
-      %td= number_to_currency bill.variable_amount ? 0 : bill.amount
-      %td= number_to_currency bill.variable_amount ? 0 : bill.amount * 12
-      %td= number_to_percentage(presenter.percent_of_income(bill.amount * 12))
+      %td.amount= number_to_currency bill.amount
+      %td.amount= number_to_currency presenter.monthly_bills_for(bill)
+      %td= raw credit_or_debit(bill.amount - presenter.monthly_bills_for(bill))

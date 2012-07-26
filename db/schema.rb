@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120626025127) do
+ActiveRecord::Schema.define(:version => 20120704051048) do
 
   create_table "bills", :force => true do |t|
     t.datetime "created_at",      :null => false
@@ -34,6 +34,20 @@ ActiveRecord::Schema.define(:version => 20120626025127) do
     t.decimal  "amount",      :null => false
     t.text     "description"
     t.string   "schedule",    :null => false
+  end
+
+  create_table "categories", :force => true do |t|
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.string   "type"
+    t.integer  "user_id",                            :null => false
+    t.string   "title",                              :null => false
+    t.string   "alias"
+    t.decimal  "amount",                             :null => false
+    t.text     "description"
+    t.boolean  "variable_amount", :default => false, :null => false
+    t.string   "schedule"
+    t.boolean  "after_tax",       :default => true,  :null => false
   end
 
   create_table "expenses", :force => true do |t|
@@ -69,6 +83,20 @@ ActiveRecord::Schema.define(:version => 20120626025127) do
     t.string   "schedule"
     t.boolean  "variable_amount"
     t.boolean  "from_before_tax_income", :default => false
+  end
+
+  create_table "transactions", :force => true do |t|
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.string   "type"
+    t.integer  "category_id"
+    t.integer  "user_id",                       :null => false
+    t.string   "title",                         :null => false
+    t.decimal  "amount",                        :null => false
+    t.date     "date",                          :null => false
+    t.text     "description"
+    t.boolean  "after_tax",   :default => true, :null => false
+    t.boolean  "confirmed",   :default => true, :null => false
   end
 
   create_table "users", :force => true do |t|

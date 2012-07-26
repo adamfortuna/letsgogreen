@@ -1,0 +1,9 @@
+= simple_form_for(category, html: { class: 'form-horizontal well' }) do |f|
+  %fieldset
+    = f.input :title
+    = f.input :amount, as: :currency
+    = f.input :schedule, collection: Saving::SCHEDULES
+    = f.input :description, input_html: { rows: 3 }
+
+    .form-actions
+      = f.submit class: 'btn btn-primary btn-large'

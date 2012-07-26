@@ -18,15 +18,19 @@ class SavingsPresenter < SimpleDelegator
   end
 
   def monthly_total
-    @internal_savings.inject(0) do |total, saving|
+    @monthly_total ||= @internal_savings.inject(0) do |total, saving|
       total + saving.monthly_amount
     end
   end
 
   def yearly_total
-    @internal_savings.inject(0) do |total, saving|
+    yearly_total ||= @internal_savings.inject(0) do |total, saving|
       total + saving.yearly_amount
     end
+  end
+
+  def savings_rate
+    yearly_total / @controller.current_user.yearly_income * 100
   end
 end
 

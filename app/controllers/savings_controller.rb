@@ -2,7 +2,7 @@ class SavingsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    savings = current_user.savings.order("amount desc")
+    savings = current_user.savings.order(:title)
     @presenter = SavingsPresenter.new(savings, self)
   end
 
@@ -35,6 +35,15 @@ class SavingsController < ApplicationController
     else
       render :edit
     end
-    
   end
+
+  def destroy
+    @saving = current_user.savings.find(params[:id])
+    if @saving.destroy
+      redirect_to savings_path, flash: { notice: "Your saving was deleted." }
+    else
+      redirect_to savings_path, flash: { alert: "There was a problem deleting this saving." }
+    end
+  end
+
 end

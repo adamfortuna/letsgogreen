@@ -3,17 +3,18 @@ class BillsController < ApplicationController
   before_filter :set_bill, only: [:edit, :update, :destroy, :show, :pay]
 
   def index
-    @bills = current_user.bills.order(:payee)
+    bills = current_user.bills.order(:title)
     if params[:schedule] == "monthly"
-      @bills = @bills.monthly
+      bills = bills.monthly
     elsif params[:schedule] == "yearly"
-      @bills = @bills.yearly
+      bills = bills.yearly
     end
-    @bills = @bills.page(params[:page] || 1).per(50)
+
+    @presenter = BillsPresenter.new(self, bills)
   end
 
   def new
-    @bill = current_user.bills.new(date: Time.now)
+    @bill = current_user.bills.new
   end
 
   def create

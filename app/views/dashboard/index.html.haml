@@ -11,25 +11,23 @@
           %thead
             %tr
               %th Type
-              %th Monthly Budget
+              %th Monthly Estimate
               %th Monthly Amount
-              %th Yearly Amount
-              %th % Of Income
+              %th Difference
 
           = render partial: 'income', locals: { presenter: @presenter }
           = render partial: 'savings', locals: { presenter: @presenter }
 
           = render partial: 'monthly_bills', locals: { presenter: @presenter }
-          = render partial: 'yearly_bills', locals: { presenter: @presenter }
+          = # render partial: 'yearly_bills', locals: { presenter: @presenter }
 
           = render partial: 'monthly_budgets', locals: { presenter: @presenter }
-          = render partial: 'yearly_budgets', locals: { presenter: @presenter }
+          = # render partial: 'yearly_budgets', locals: { presenter: @presenter }
 
           %tfoot
             %tr
               %th Total
               %th= number_to_currency @presenter.budget_total
-              %th= number_to_currency @presenter.monthly_total
               %th= number_to_currency @presenter.yearly_total
               %th &nbsp;
 

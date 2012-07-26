@@ -1,4 +1,4 @@
-= link_to new_income_path, class: "btn btn-success block" do
+= link_to new_income_path, class: "btn-large btn-success block" do
   %i.icon-plus
   Add New Income
 %br/
@@ -6,7 +6,7 @@
 .well
   %dl
     %dt Monthly Income
-    %dd= @presenter.monthly_total
+    %dd= number_to_currency @presenter.monthly_total
 
     %dt Yearly Income
-    %dd= @presenter.yearly_total
+    %dd= number_to_currency @presenter.yearly_total

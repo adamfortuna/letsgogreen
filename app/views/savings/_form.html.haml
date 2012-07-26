@@ -4,7 +4,7 @@
     = f.input :amount, as: :currency
     = f.input :variable_amount
     = f.input :description, input_html: { rows: 3 }
-    = f.input :from_before_tax_income, label: 'Not included in income', hint: "Check this if this isn't included in your income - like for 401k contributions."
+    = f.input :after_tax, label: 'After Tax Savings', hint: "Uncheck this if this isn't included in your income - like for 401k contributions."
     = f.input :schedule, collection: Saving::SCHEDULES, default: Saving.default_schedule
 
     .form-actions

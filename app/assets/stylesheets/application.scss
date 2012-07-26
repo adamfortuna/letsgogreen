@@ -8,3 +8,21 @@
 */
 
 .block { display: block; }
+
+table {
+  tr.debit {
+    .amount {
+      color: red;
+    }
+  }
+  tr.credit {
+    .amount {
+      color: green;
+    }
+  }
+
+  tr td {
+    &.credit, span.credit { color: green; }
+    &.debit, span.debit { color: red; }
+  }
+}

@@ -1,16 +1,19 @@
 %tbody.income
-  %tr
-    %td= link_to "Income", "#", class: 'expand'
-    %td= number_to_currency 6000
-    %td= number_to_currency presenter.monthly_income
-    %td= number_to_currency presenter.yearly_income
-    %td= number_to_percentage(100, precision: 2)
+  %tr.credit
+    %td
+      = link_to "#", class: 'expand' do
+        %i.icon-money
+        Income
+    %td.amount= number_to_currency presenter.monthly_income_estimate
+    %td.amount= number_to_currency presenter.monthly_income_amount
+    %td= raw credit_or_debit(presenter.monthly_income_amount - presenter.monthly_income_estimate)
 %tbody.income.nested
   - presenter.incomes.each do |income|
-    %tr
-      %td{ colspan: '2' }
-        \--
-        = link_to income.from, income
-      %td= number_to_currency income.amount
-      %td= number_to_currency income.amount * 12
-      %td &nbsp;
+    %tr.credit
+      %td
+        = link_to income do
+          %i.icon-chevron-right
+          = income.title
+      %td.amount= number_to_currency income.amount
+      %td.amount= number_to_currency presenter.monthly_income_for(income)
+      %td= raw credit_or_debit(presenter.monthly_income_for(income) - income.amount)

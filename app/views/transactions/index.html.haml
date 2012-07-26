@@ -1,0 +1,26 @@
+#subheader
+  .inner
+    .container
+      %h1= @presenter.title
+
+#subpage
+  .container
+    .row
+      .span9
+        %table.table.expenses
+          %thead
+            %tr
+              %th Title
+              %th Category
+              %th Amount
+              %th Date
+              %th Actions
+          
+          %tbody
+            = render @presenter.transactions
+      .span3
+        = link_to new_transaction_path, class: "btn btn-success block" do
+          %i.icon-plus
+          Add New Transaction
+        .well
+

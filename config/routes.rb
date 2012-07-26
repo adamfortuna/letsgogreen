@@ -3,7 +3,9 @@ Demo::Application.routes.draw do
   devise_for :users
   resources :users, only: [:show]
 
-  resources :expenses
+  resources :transactions
+
+  
   resources :incomes
   resources :bills do
     member do
@@ -16,6 +18,7 @@ Demo::Application.routes.draw do
 
 
   get 'dashboard', to: 'dashboard#index', as: 'dashboard'
+  get 'dashboard/prototype', to: 'dashboard#prototype', as: 'prototype'
 
   get 'home/about', to: 'home#about', as: 'about'
   root to: 'home#index'

@@ -1,0 +1,15 @@
+%tr.credit
+  %td= credit.title
+  %td= credit.category ? link_to(credit.category, transactions_path(category: credit.category)) : ""
+  %td.amount= number_to_currency(credit.amount)
+  %td= credit.date
+  %td
+    .btn-group
+      = link_to edit_transaction_path(credit), class: 'btn' do
+        %span.icon-pencil.icon-white Edit
+      = link_to "#", class: 'btn dropdown-toggle', :"data-toggle" => "dropdown" do
+        %span.caret
+      %ul.dropdown-menu
+        %li
+          = link_to transaction_path(credit), method: :delete, confirm: "Are you sure you want to delete this?" do
+            %span.icon-trash Delete

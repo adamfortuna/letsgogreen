@@ -4,11 +4,11 @@
       Dashboard By Month
     - presenter.months_with_expenses.each do |month|
       %li
-        = link_to month.strftime("%B %Y"), expenses_path(start_date: month, end_date: month.end_of_month + 1.day)
+        = link_to month.strftime("%B %Y"), transactions_path(start_date: month, end_date: month.end_of_month + 1.day)
 
-= link_to new_expense_path, class: "btn btn-success block" do
+= link_to new_transaction_path, class: "btn btn-success block" do
   %i.icon-plus
-  Add New Expense
+  Add New Transaction
 %br/
 
 = link_to new_income_path, class: "btn btn-success block" do

@@ -1,8 +1,7 @@
 %tr
-  %td= income.name
+  %td= income.title
   %td= number_to_currency(income.monthly_amount)
   %td= number_to_currency(income.yearly_amount)
-  %td= l income.date
   %td= income.schedule.blank? ? "Once" : income.schedule
   %td
     .btn-group

@@ -1,0 +1,12 @@
+#subheader
+  .inner
+    .container
+      %h1 Edit Transaction
+
+#subpage
+  .container
+    .row
+      .span9
+        = render partial: 'form', locals: { transaction: @transaction }
+      .span3
+        .well

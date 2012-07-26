@@ -1,4 +1,4 @@
-= link_to new_saving_path, class: "btn btn-success block" do
+= link_to new_saving_path, class: "btn btn-large btn-success block" do
   %i.icon-plus
   Add New Savings
 %br/
@@ -10,3 +10,6 @@
 
     %dt Yearly Total
     %dd= number_to_currency @presenter.yearly_total
+
+    %dt Savings Rate
+    %dd= number_to_percentage @presenter.savings_rate

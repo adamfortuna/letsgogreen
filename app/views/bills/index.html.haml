@@ -6,19 +6,24 @@
 #subpage
   .container
     .row
+      .span9.well
+        %p
+          A lot of your expenses each month don't vary - or don't vary much. You may pay the same amount each month for your cell phone, your rent/mortgage and your car insurance, but the amount you pay on your power bill changes.
+        %p We've got your covered.
+        %p= link_to "close this", "#"
+    .row
       .span9
         %table.table.bills
           %thead
             %tr
               %th Payee
-              %th Bill
-              %th Date
+              %th Alias
               %th Monthly Amount
               %th Yearly Amount
               %th Schedule
           
           %tbody.income
-            = render @bills
+            = render @presenter.bills
 
       .span3
         = render partial: 'sidebar'

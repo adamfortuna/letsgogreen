@@ -6,6 +6,11 @@
 #subpage
   .container
     .row
+      .span9.well
+        %h2 Savings
+        %p Outline out how much you plan to save each month and each year. These may be before-tax savings like a 401k, or after tax like a Roth IRA or brokerage account.
+        %p= link_to "close this", "#"
+    .row
       .span9
         %table.table.savings
           %thead
@@ -17,6 +22,11 @@
           
           %tbody.income
             = render @presenter.savings
+          %tfoot
+            %th Totals
+            %th= number_to_currency @presenter.monthly_total
+            %th= number_to_currency @presenter.yearly_total
+            %th{ colspan: 2 } &nbsp;
 
       .span3
         = render partial: 'sidebar'

@@ -1,9 +1,20 @@
-= link_to new_bill_path, class: "btn btn-success block" do
+= link_to new_bill_path, class: "btn btn-success btn-large block" do
   %i.icon-plus
   Add New Bill
 %br/
 
 .well
+  %h3 Overview
+  %dl
+    %dt Monthly Expenses
+    %dd= number_to_currency @presenter.monthly_total
+
+    %dt Yearly Expenses
+    %dd= number_to_currency @presenter.yearly_total
+    
+    %dt Bills Spend Rate
+    %dd= number_to_percentage @presenter.bill_spend_rate
+
   %ul.nav.nav-list
     %li.nav-header
       By Schedule
