@@ -11,7 +11,6 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'bootstrap-sass'
-  gem 'font-awesome-rails'
 end
 
 # Javascript Related
@@ -34,4 +33,5 @@ group :development, :test do
   gem 'capybara'
   gem 'rspec-rails', '>= 2.0.1'
   gem 'debugger'
+  gem 'heroku'
 end
