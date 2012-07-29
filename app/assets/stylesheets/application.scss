@@ -21,7 +21,7 @@ table {
     }
   }
 
-  tr td {
+  tr td, tr th {
     &.credit, span.credit { color: green; }
     &.debit, span.debit { color: red; }
   }

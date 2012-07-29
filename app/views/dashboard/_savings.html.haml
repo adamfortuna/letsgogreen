@@ -8,6 +8,7 @@
   - presenter.savings.each do |saving|
     %tr.debit
       %td
+        \--
         = link_to saving do
           = saving.title
       %td.amount= number_to_currency saving.monthly_amount * -1

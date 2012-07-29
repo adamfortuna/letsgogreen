@@ -1,17 +1,15 @@
 %tbody.yearly-bills
-  %tr
+  %tr.debit
     %td= link_to "Yearly Bills", "#", class: 'expand'
-    %td= number_to_currency 5000 / 12
-    %td= number_to_currency presenter.yearly_bills_amount_monthly
-    %td= number_to_currency presenter.yearly_bills_amount
-    %td= number_to_percentage(presenter.yearly_bills_percentage, precision: 2)
-%tbody.monthly-bills.nested
-  - presenter.yearly_bills.each do |bill|
-    %tr
+    %td.amount= number_to_currency presenter.yearly_bills_estimate
+    %td.amount= number_to_currency presenter.yearly_bills_amount
+    %td= raw credit_or_debit(presenter.yearly_bills_amount - presenter.yearly_bills_estimate)
+%tbody.yearly-bills.nested
+  - presenter.yearly_bill_presenters.each do |bill|
+    %tr.debit
       %td
         \--
-        = name_for_bill(bill)
-      %td= number_to_currency bill.amount / 12
-      %td= number_to_currency bill.amount / 12
-      %td= number_to_currency bill.amount
-      %td= number_to_percentage(presenter.percent_of_income(bill.amount), precision: 2)
+        = link_to name_for_bill(bill), transactions_path(category: bill)
+      %td.amount= number_to_currency bill.amount
+      %td.amount= number_to_currency presenter.yearly_bills_for(bill)
+      %td= raw credit_or_debit(bill.amount - presenter.yearly_bills_for(bill))

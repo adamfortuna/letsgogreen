@@ -11,8 +11,8 @@
   - presenter.incomes.each do |income|
     %tr.credit
       %td
+        \--
         = link_to income do
-          %i.icon-chevron-right
           = income.title
       %td.amount= number_to_currency income.amount
       %td.amount= number_to_currency presenter.monthly_income_for(income)

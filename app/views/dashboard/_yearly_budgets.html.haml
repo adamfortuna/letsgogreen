@@ -1,17 +1,15 @@
 %tbody.budgets
-  %tr
+  %tr.debit
     %td= link_to "Yearly Budgets", "#", class: 'expand'
-    %td= number_to_currency presenter.yearly_budget_amount_per_month
-    %td= number_to_currency 0
-    %td= number_to_currency 0
-    %td= number_to_percentage(0, precision: 2)
+    %td.amount= number_to_currency presenter.yearly_budgets_estimate
+    %td.amount= number_to_currency presenter.yearly_budgets_amount
+    %td= raw credit_or_debit(presenter.yearly_budgets_amount - presenter.yearly_budgets_estimate)
 %tbody.budgets.nested
   - presenter.yearly_budgets.each do |budget|
-    %tr
+    %tr.debit
       %td
         \--
-        = link_to budget.title, budget
-      %td= number_to_currency budget.amount
-      %td= number_to_currency budget.expenses_amount_for(presenter.start_date, presenter.end_date)
-      %td= number_to_currency budget.expenses_amount_for(presenter.start_year, presenter.end_year)
-      %td= number_to_percentage(presenter.percent_of_income(budget.expenses_amount_for(presenter.start_year, presenter.end_year)), precision: 2)
+        = link_to budget.title, transactions_path(category: budget.id)
+      %td.amount= number_to_currency budget.amount
+      %td.amount= number_to_currency presenter.yearly_budgets_for(budget)
+      %td= raw credit_or_debit(budget.amount - presenter.yearly_budgets_for(budget))

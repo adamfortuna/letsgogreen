@@ -7,6 +7,7 @@
   .container
     .row
       .span9
+        %h3 Monthly Outlook
         %table.table.expenses
           %thead
             %tr
@@ -19,17 +20,48 @@
           = render partial: 'savings', locals: { presenter: @presenter }
 
           = render partial: 'monthly_bills', locals: { presenter: @presenter }
-          = # render partial: 'yearly_bills', locals: { presenter: @presenter }
-
           = render partial: 'monthly_budgets', locals: { presenter: @presenter }
-          = # render partial: 'yearly_budgets', locals: { presenter: @presenter }
+
+          %tr.debit
+            %td Yearly Bills
+            %td.amount= number_to_currency @presenter.yearly_bills_estimate_per_month
+            %td.amount= number_to_currency @presenter.yearly_bills_amount_per_month
+            %td= raw credit_or_debit(@presenter.yearly_bills_amount_per_month - @presenter.yearly_bills_estimate_per_month)
+
+          %tr.debit
+            %td Yearly Budgets
+            %td.amount= number_to_currency @presenter.yearly_budgets_estimate_per_month
+            %td.amount= number_to_currency @presenter.yearly_budgets_amount_per_month
+            %td= raw credit_or_debit(@presenter.yearly_budgets_amount_per_month - @presenter.yearly_budgets_estimate_per_month)
 
           %tfoot
             %tr
-              %th Total
-              %th= number_to_currency @presenter.budget_total
-              %th= number_to_currency @presenter.yearly_total
-              %th &nbsp;
+              %th Monthly Total
+              %th= raw credit_or_debit(@presenter.monthly_estimate)
+              %th= raw credit_or_debit(@presenter.monthly_amount)
+              %th= raw credit_or_debit(-@presenter.monthly_estimate + @presenter.monthly_amount)
+        %br
+
+
+    .row
+      .span9
+        %h3 Yearly Outlook
+        %table.table.expenses
+          %thead
+            %tr
+              %th Type
+              %th Yearly Estimate
+              %th Yearly Amount
+              %th Difference
+          = render partial: 'yearly_bills', locals: { presenter: @presenter }
+          = render partial: 'yearly_budgets', locals: { presenter: @presenter }
+
+          %tfoot
+            %tr
+              %th Yearly Total
+              %th= raw credit_or_debit(@presenter.yearly_estimate)
+              %th= raw credit_or_debit(@presenter.yearly_amount)
+              %th= raw credit_or_debit(-@presenter.yearly_estimate + @presenter.yearly_amount)
 
       .span3
         = render partial: 'sidebar', locals: { presenter: @presenter }

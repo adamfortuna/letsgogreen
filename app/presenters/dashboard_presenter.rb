@@ -13,4 +13,12 @@ class DashboardPresenter < SimpleDelegator
       BillPresenter.new(bill, @controller)
     end
   end
+
+  def yearly_bill_presenters
+    @yearly_bill_presenters ||= yearly_bills.collect do |bill|
+      BillPresenter.new(bill, @controller)
+    end
+  end
+
+
 end

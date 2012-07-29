@@ -9,7 +9,7 @@
     %tr.debit
       %td
         \--
-        = link_to budget.title, budget
+        = link_to budget.title, transactions_path(category: budget)
       %td.amount= number_to_currency budget.amount
       %td.amount= number_to_currency presenter.monthly_budgets_for(budget)
       %td= raw credit_or_debit(budget.amount - presenter.monthly_budgets_for(budget))
