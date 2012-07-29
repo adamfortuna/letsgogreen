@@ -68,5 +68,8 @@ class TransactionsController < ApplicationController
 
   def parse_date
     params[:transaction][:date] = Date.strptime(params[:transaction][:date], "%m/%d/%Y") if params[:transaction] && params[:transaction][:date]
+    if params[:transaction][:type] == 'Savings'
+      params[:transaction][:type] = 'Debit'
+    end
   end
 end
