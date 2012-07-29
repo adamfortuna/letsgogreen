@@ -23,23 +23,17 @@
           = render partial: 'monthly_budgets', locals: { presenter: @presenter }
 
           %tr.debit
-            %td Yearly Bills
-            %td.amount= number_to_currency @presenter.yearly_bills_estimate_per_month
-            %td.amount -
-            %td -
-
-          %tr.debit
-            %td Yearly Budgets
-            %td.amount= number_to_currency @presenter.yearly_budgets_estimate_per_month
-            %td -
-            %td -
+            %td.tt{ title: 'This is how much you should set aside each month for yearly expenses.' } Yearly Bills & Budgets
+            %td.amount= number_to_currency @presenter.yearly_bills_estimate_per_month + @presenter.yearly_budgets_estimate_per_month
+            %td.amount= number_to_currency @presenter.yearly_bills_estimate_per_month + @presenter.yearly_budgets_estimate_per_month
+            %td.credit $0.00
 
           %tfoot
             %tr
               %th Monthly Total
-              %th= raw credit_or_debit(@presenter.monthly_estimate)
-              %th= raw credit_or_debit(@presenter.monthly_amount)
-              %th= raw credit_or_debit(-@presenter.monthly_estimate + @presenter.monthly_amount)
+              %th.tt{ title: 'Try to balance your accounts so this is positive. Increase your savings to bring this back to 0.'}= raw credit_or_debit(@presenter.monthly_estimate)
+              %th.tt{ title: 'This is the net change in your account for the month.' }= raw credit_or_debit(@presenter.monthly_amount)
+              %th.tt{ title: 'The difference in your account this month from what was expected.'}= raw credit_or_debit(-@presenter.monthly_estimate + @presenter.monthly_amount)
         %br
 
 
@@ -51,7 +45,7 @@
             %tr
               %th Type
               %th Yearly Estimate
-              %th Yearly Amount
+              %th Amount Spent
               %th Difference
           = render partial: 'yearly_bills', locals: { presenter: @presenter }
           = render partial: 'yearly_budgets', locals: { presenter: @presenter }

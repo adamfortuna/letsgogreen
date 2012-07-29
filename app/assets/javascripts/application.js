@@ -21,4 +21,5 @@
 $(function() {
   // $('a').pjax('#pjax-wrapper').live('click');
   $(".date_picker input").datepicker();
+  $(".tt").tooltip();
 });
