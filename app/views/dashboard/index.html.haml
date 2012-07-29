@@ -25,14 +25,14 @@
           %tr.debit
             %td Yearly Bills
             %td.amount= number_to_currency @presenter.yearly_bills_estimate_per_month
-            %td.amount= number_to_currency @presenter.yearly_bills_amount_per_month
-            %td= raw credit_or_debit(@presenter.yearly_bills_amount_per_month - @presenter.yearly_bills_estimate_per_month)
+            %td.amount -
+            %td -
 
           %tr.debit
             %td Yearly Budgets
             %td.amount= number_to_currency @presenter.yearly_budgets_estimate_per_month
-            %td.amount= number_to_currency @presenter.yearly_budgets_amount_per_month
-            %td= raw credit_or_debit(@presenter.yearly_budgets_amount_per_month - @presenter.yearly_budgets_estimate_per_month)
+            %td -
+            %td -
 
           %tfoot
             %tr
