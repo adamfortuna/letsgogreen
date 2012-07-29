@@ -201,10 +201,10 @@ class Dashboard
 
   # Monthly totals
   def monthly_estimate
-    monthly_income_estimate + monthly_savings_estimate + monthly_bills_estimate + monthly_budgets_estimate - yearly_bills_estimate_per_month + yearly_budgets_estimate_per_month
+    monthly_income_estimate + monthly_savings_estimate + monthly_bills_estimate + monthly_budgets_estimate + yearly_bills_estimate_per_month + yearly_budgets_estimate_per_month
   end
   def monthly_amount
-    monthly_income_amount + monthly_savings_amount + monthly_bills_amount + monthly_budgets_amount - yearly_bills_estimate_per_month + yearly_budgets_estimate_per_month
+    monthly_income_amount + monthly_savings_amount + monthly_bills_amount + monthly_budgets_amount + yearly_bills_estimate_per_month + yearly_budgets_estimate_per_month
   end
 
   # Yearly totals
