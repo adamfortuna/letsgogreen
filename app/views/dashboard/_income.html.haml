@@ -14,6 +14,6 @@
         \--
         = link_to income do
           = income.title
-      %td.amount= number_to_currency income.amount
+      %td.amount= number_to_currency income.monthly_amount
       %td.amount= number_to_currency presenter.monthly_income_for(income)
       %td= raw credit_or_debit(presenter.monthly_income_for(income) - income.amount)
